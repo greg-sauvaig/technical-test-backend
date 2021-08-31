@@ -8,7 +8,9 @@
     "example_compute": "node exampleCompute.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "level1": "tsc && node ./dist/level1/server/index.js",
-    "queueFile": "tsc && node ./dist/queue/queueFile.js"
+    "level2": "tsc && node ./dist/level2/server/index.js",
+    "queueFile": "tsc && node ./dist/queue/queueFile.js",
+    "queueProcess": "tsc && node ./dist/queue/queueProcess.js"
   },
   "author": {
     "name": "Sauvaigo grégoire",
