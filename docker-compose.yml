@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+
+  cache:
+    image: "redis:alpine"
+    hostname: redis
+    ports:
+      - "6379:6379"
+
+  node:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    working_dir: /usr/app
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - cache
+    links:
+      - cache
+      
+  queue:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    working_dir: /usr/app
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - cache
+    links:
+      - cache
+      
